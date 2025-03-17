@@ -30,4 +30,23 @@ contract PicaTokenTest is Test{
     function testBobBalance() public view {
         assertEq(picaToken.balanceOf(bob), STARTING_BALANCE);
     }
+
+    function testAllowense() public {
+        uint256 initalAllowance = 1000;
+
+        //bob approves alice to spend on her behalf 
+        vm.prank(bob);
+        picaToken.approve(alice, initalAllowance);
+
+        uint256 transferAmount = 500;
+
+        vm.prank(alice);
+        picaToken.transferFrom(bob, alice, transferAmount);
+
+        assertEq(picaToken.balanceOf(alice), transferAmount);
+        assertEq(picaToken.balanceOf(bob), STARTING_BALANCE - transferAmount);
+
+    }
+
+
 }
