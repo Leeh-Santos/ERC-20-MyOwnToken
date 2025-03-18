@@ -13,7 +13,7 @@ contract PicaTokenTest is Test{
     PicaToken public picaToken;
     DeployPica public deployer;
 
-    address bob = makeAddr("bob");
+    address bob = makeAddr("bobmarlley");
     address alice = makeAddr("alice");
 
     uint256 public constant STARTING_BALANCE = 100 ether;
